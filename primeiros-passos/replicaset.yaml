@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: meurs
+  labels:
+    app: myapp
+    key: value
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: meu-app
+          image: rukasu/starwars-scene:v2
+          ports:
+            - containerPort: 80
